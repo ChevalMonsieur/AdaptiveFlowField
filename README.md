@@ -33,7 +33,7 @@
 ## WHAT IS IN THIS REPO
 
 This repository contains multiple assets to let people start up with flow fields, here is a list of it :
-- a <a href="https://chevalmonsieur.github.io/AdaptiveFlowField/">website</a> that shows how the script can be implemented and let you simply ``find your favorite`` flow field
+- a <a href="https://adaptive-flow-field.lx-xl.fr">website</a> that shows how the script can be implemented and let you simply ``find your favorite`` flow field
 - a commented ``JS script`` including various parameters that can be updated in realtime to easily get your perfect flow field simulation 
 - a shorter version of this script ``(17 lines)`` to show that it's not that hard to implement
 - this ``README.md`` to explain how everything works
