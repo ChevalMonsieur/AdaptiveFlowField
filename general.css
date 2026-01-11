@@ -24,7 +24,17 @@ input {
     background-color: black;
     color: whitesmoke;
 
-    max-width: 50px;  
+    max-width: 50px;
+}
+
+input[type="color"] {
+    max-width: 60px;
+    height: 30px;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px;
+    margin-left: 0.5rem;
 }
 
 footer {
