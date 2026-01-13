@@ -16,6 +16,7 @@ let borderRule = "randomTeleport"; // determines what happens when a point goes 
 let mainWidth, mainHeight; // size of the canvas
 let currentColor; // color of the points
 let currentColor2; // 2nd color of the points (if needed)
+let bgColor; // background color
 
 function setup() {
 
@@ -30,7 +31,8 @@ function setup() {
 
     // initialize canvas
     createCanvas(mainWidth, mainHeight); // set canva size
-    background(0); // set background color in A
+    bgColor = color(0, 0, 0); // set default background color to black
+    background(bgColor); // set background color
     currentColor = color(0,255,210, opacity); // set base color in RGBA
     currentColor2 = null; // set secondary color in RGBA
     stroke(currentColor); // set color in RGBA
@@ -45,7 +47,8 @@ function setup() {
 function draw() {
     // add fade effect if fade is not 0
     if (fadeSpeed > 0) {
-        background(0, fadeSpeed);
+        let fadeBg = color(red(bgColor), green(bgColor), blue(bgColor), fadeSpeed);
+        background(fadeBg);
     }
 
     for (vector of points) {
@@ -106,7 +109,7 @@ function reset() {
     //refresh values
     stroke(currentColor);
     strokeWeight(size);
-    background(0);
+    background(bgColor);
 
     // replace all points to random positions
     for (vector of points) {
@@ -192,8 +195,39 @@ function inputColor(inputColor, inputColor2) {
     if (inputColor != null) { // makes it so that it doesn't change color if inputColor is null (serves for apply all inputs when called with no values in html)
         currentColor = inputColor; // change color
         currentColor2 = inputColor2; // change 2nd color
+
+        // update color picker to match the new color
+        let r = Math.round(red(currentColor));
+        let g = Math.round(green(currentColor));
+        let b = Math.round(blue(currentColor));
+        let hexColor = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        document.getElementById("particleColor").value = hexColor;
     }
 
+    reset();
+}
+
+function inputParticleColorFromPicker() {
+    let hexColor = document.getElementById("particleColor").value; // get hex color from picker
+    // convert hex to RGB
+    let r = parseInt(hexColor.substr(1, 2), 16);
+    let g = parseInt(hexColor.substr(3, 2), 16);
+    let b = parseInt(hexColor.substr(5, 2), 16);
+
+    currentColor = color(r, g, b, opacity); // set new color with current opacity
+    currentColor2 = null; // reset 2nd color
+    stroke(currentColor); // apply color
+    reset();
+}
+
+function inputBgColorFromPicker() {
+    let hexColor = document.getElementById("bgColor").value; // get hex color from picker
+    // convert hex to RGB
+    let r = parseInt(hexColor.substr(1, 2), 16);
+    let g = parseInt(hexColor.substr(3, 2), 16);
+    let b = parseInt(hexColor.substr(5, 2), 16);
+
+    bgColor = color(r, g, b); // set new background color
     reset();
 }
 

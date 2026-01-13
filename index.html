@@ -33,6 +33,16 @@
                             <p onclick="inputColor(color(225, 170, 10, opacity))" class="bouton" id="saffron">saffron</p>
                             <p onclick="inputColor(color(210, 210, 210, opacity))" class="bouton" id="titanium">titanium</p>
                         </div>
+
+                        <div class="valueWithName" title="choose particle color">
+                            <p class="valueName">particle color : </p>
+                            <input type="color" id="particleColor" class="colorPicker" value="#00ffd2" onchange="inputParticleColorFromPicker()">
+                        </div>
+
+                        <div class="valueWithName" title="choose background color">
+                            <p class="valueName">background color : </p>
+                            <input type="color" id="bgColor" class="colorPicker" value="#000000" onchange="inputBgColorFromPicker()">
+                        </div>
                     </div>
 
                     <div>
